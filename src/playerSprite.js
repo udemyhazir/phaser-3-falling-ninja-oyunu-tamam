@@ -9,9 +9,9 @@ export default class PlayerSprite extends Phaser.Physics.Arcade.Sprite {
  
         scene.physics.add.existing(this);
 
-        ///
+        
         this.body.setSize(x / GameOptions.pixelScale * 0.5, y / GameOptions.pixelScale * 0.6, false);
-        ///
+        
         this.body.setOffset(15, 9);
 
         //this.anims.play("run",true)
