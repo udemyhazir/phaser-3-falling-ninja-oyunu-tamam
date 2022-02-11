@@ -37,7 +37,7 @@ export class StartGame extends Phaser.Scene {
 
 
  
-        // drawing the path
+
         this.graphics = this.add.graphics();
         this.graphics.lineStyle(5, 0xdc2f02,0.5);
         this.path.draw(this.graphics);
