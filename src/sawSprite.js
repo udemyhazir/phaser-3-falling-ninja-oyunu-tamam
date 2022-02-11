@@ -1,5 +1,5 @@
 
-///4
+
 
 import { GameOptions } from './gameOptions';
 import { rastgeleDegerGetir } from './utils';
@@ -40,7 +40,7 @@ export default class SawSprite extends Phaser.Physics.Arcade.Sprite {
     }
  
 
-    ////1
+  
     hareketBelirle(){
 
 
