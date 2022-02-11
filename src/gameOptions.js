@@ -1,4 +1,4 @@
-// CONFIGURABLE GAME OPTIONS
+
  
 export const GameOptions = {
  
@@ -41,10 +41,10 @@ export const GameOptions = {
 
     platformScale:1.8,
 
-    ///5
+    
     testereScale:2,
 
-    ///5
+   
     testereDevriyeHizDizisi: [10, 30],
 
     testereOlasilik:1,
