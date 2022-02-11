@@ -2,7 +2,7 @@ import WebFontFile from './webFont'
 
 export class PreloadAssets extends Phaser.Scene {
  
-    // constructor    
+     
     constructor() {
         super({
             key: 'PreloadAssets'
