@@ -91,7 +91,7 @@ export default class EnemySprite extends Phaser.Physics.Arcade.Sprite {
         
         if ((platformAlanlar.right +20 < bekciAlanlar.right && bekciHiz > 0) || (platformAlanlar.left - 20 > bekciAlanlar.left && bekciHiz < 0)) {
  
-            // invert enemy horizontal speed
+           
             this.setVelocityX(bekciHiz * -1);
             
         }
