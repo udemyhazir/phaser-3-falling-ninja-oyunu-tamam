@@ -4,11 +4,11 @@ export default class PlatformSprite extends Phaser.Physics.Arcade.Sprite {
  
  
     
-    // constructor
+   
     constructor(scene, x, y, key) {
         super(scene, x, y, key);
  
-        //isFadingOut= false;
+        
         // sahneye platformu ekleme
         scene.add.existing(this);
  
