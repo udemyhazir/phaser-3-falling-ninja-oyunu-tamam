@@ -83,11 +83,12 @@ export class PlayGame extends Phaser.Scene {
 
         this.oyuncu.ilkHareket=false;
  
-        // create a new physics group
+       
         this.platformGrup = this.physics.add.group();
+        
         this.yanPlatformGrup = this.physics.add.group();
  
-        // create starting platform
+        
         let platform = new PlatformSprite(this, this.oyunGenislik / 2, this.oyunYukseklik * GameOptions.ilkPlatformPozisyon, "platform");
 
         this.yanPlatformOlustur(platform.x,platform.y,platform.displayWidth,platform.displayHeight)
@@ -96,7 +97,7 @@ export class PlayGame extends Phaser.Scene {
 
         this.bekciGrup = new EnemyGroup(this.physics.world, this);
 
-        ///6
+       
         this.testereGrup = new SawGroup(this.physics.world, this);
 
         
@@ -129,7 +130,7 @@ export class PlayGame extends Phaser.Scene {
         
         
 
-        // input listener to move the hero
+        
         this.input.on("pointerdown", this.oyuncuyuHareketEttir,this);
 
         this.input.on("pointerup", this.oyuncuyuDurdur, this);
@@ -151,22 +152,21 @@ export class PlayGame extends Phaser.Scene {
 
     arkaPlanAyarla() {
  
-        // add a tileSprite
+        
         this.arkaPlanResim = this.add.tileSprite(0, 0, this.oyunGenislik / GameOptions.pixelScale, this.oyunYukseklik / GameOptions.pixelScale, 'background');
 
         this.arkaPlanResim.scale = GameOptions.pixelScale;
          
-        // set background origin to top left corner
+       
         this.arkaPlanResim.setOrigin(0, 0);
  
-        // set background scale
         
     }
 
-    //
+   
     animasyonlarıOlustur(){
  
-        // hero idle animation
+        
         this.anims.create({
             key: "idle",
             frames: this.anims.generateFrameNumbers('oyuncu', {
@@ -177,7 +177,7 @@ export class PlayGame extends Phaser.Scene {
             repeat: -1
         });
  
-        // hero run animation
+      
         this.anims.create({
             key: "run",
             frames: this.anims.generateFrameNumbers('oyuncu_kos', {
@@ -199,7 +199,7 @@ export class PlayGame extends Phaser.Scene {
             
         });
  
-        // enemy run animation
+       
         this.anims.create({
             key: "bekci_run",
             frames: this.anims.generateFrameNumbers('bekci_kos', {
@@ -210,7 +210,7 @@ export class PlayGame extends Phaser.Scene {
             repeat: -1
         });
  
-        // enemy falling animation
+       
         this.anims.create({
             key: "falling",
             frames: this.anims.generateFrameNumbers('bekci_vurulma', {
@@ -220,7 +220,7 @@ export class PlayGame extends Phaser.Scene {
             frameRate: 20
         });
 
-        ///2
+       
         this.anims.create({
             key: "saw",
             frames: this.anims.generateFrameNumbers('testere', {
@@ -242,7 +242,7 @@ export class PlayGame extends Phaser.Scene {
             repeat: -1
         });
  
-        // enemy falling animation
+       
         this.anims.create({
             key: "tavuk_falling",
             frames: this.anims.generateFrameNumbers('tavuk_vurulma', {
@@ -262,7 +262,7 @@ export class PlayGame extends Phaser.Scene {
             repeat: -1
         });
  
-        // enemy falling animation
+        
         this.anims.create({
             key: "mantar_falling",
             frames: this.anims.generateFrameNumbers('mantar_vurulma', {
@@ -282,7 +282,7 @@ export class PlayGame extends Phaser.Scene {
             repeat: -1
         });
  
-        // enemy falling animation
+        
         this.anims.create({
             key: "rino_falling",
             frames: this.anims.generateFrameNumbers('rino_vurulma', {
@@ -302,7 +302,7 @@ export class PlayGame extends Phaser.Scene {
             repeat: -1
         });
  
-        // enemy falling animation
+      
         this.anims.create({
             key: "bocek_falling",
             frames: this.anims.generateFrameNumbers('bocek_vurulma', {
@@ -322,7 +322,7 @@ export class PlayGame extends Phaser.Scene {
             repeat: -1
         });
  
-        // enemy falling animation
+        
         this.anims.create({
             key: "yarasa_falling",
             frames: this.anims.generateFrameNumbers('yarasa_vurulma', {
@@ -371,27 +371,27 @@ export class PlayGame extends Phaser.Scene {
 
     enAltPlatformGetir(){
  
-        // lowest platform value is initially set to zero
+        
         let enAltPlatform = 0;
  
-        // get all platforms
+        
         let platformlar= this.platformGrup.getChildren();
  
-        // loop through all platforms
+      
         for (let platform of platformlar) {
  
-            // get the highest value between lowestPlatform and platform y coordinate
+           
             enAltPlatform = Math.max(enAltPlatform, platform.y);
         };
  
-        // return lowest platform coordinate
+       
         return enAltPlatform;
     }
 
 
    
 
-    // method to position a platform
+  
     platformYerlestir(platform){
 
         platform.y = this.enAltPlatformGetir() + rastgeleDegerGetir(GameOptions.platformDikeyMesafeDizisi);
@@ -446,7 +446,7 @@ export class PlayGame extends Phaser.Scene {
   
     }
 
-    // method to move the hero
+    
     oyuncuyuHareketEttir(e){
  
         let yon= e.x > this.oyunGenislik / 2 ? 1 : -1 ;
@@ -460,7 +460,7 @@ export class PlayGame extends Phaser.Scene {
             this.platformGrup.setVelocityY(-GameOptions.platformHiz);
             this.yanPlatformGrup.setVelocityY(-GameOptions.platformHiz);
 
-            ///6
+            
             this.testereGrup.setVelocityY(-GameOptions.platformHiz);
            
         }
@@ -478,7 +478,7 @@ export class PlayGame extends Phaser.Scene {
     }
 
 
-    // method to handle collisions
+    
     carpismaAlgila(body1,body2) {
 
 
@@ -495,10 +495,10 @@ export class PlayGame extends Phaser.Scene {
                 case 1:
                     if (!platform.yokOlus) {
  
-                        // flag the platform as a fading out platform
+                        
                         platform.yokOlus = true;
  
-                        // add a tween to fade the platform out
+                        
                         this.tweens.add({
                             targets: platform,
                             alpha: 0,
@@ -603,10 +603,10 @@ export class PlayGame extends Phaser.Scene {
             // }
             
             
-            // flip the enemy vertically
+           
             bekci.setFlipY(true);
             this.bekciGrup.remove(bekci);
-            //bekci.destroy(true);
+           
 
             oyuncu.setVelocityY(GameOptions.ziplamaHiz * -1);
 
@@ -661,7 +661,7 @@ export class PlayGame extends Phaser.Scene {
                 this.yanPlatformGrup.setVelocityY(-GameOptions.platformHiz);
                 
 
-                ///
+              
                 this.platformaBekciYerlestirme(platform);
                 this.platformaTestereYerlestirme(platform);
 
@@ -701,7 +701,7 @@ export class PlayGame extends Phaser.Scene {
             }
         }
 
-         // if the hero falls down or leaves the stage from the top...
+       
         if(this.oyuncu.y > this.oyunYukseklik || this.oyuncu.y < 0) {
  
             this.deadMusic.play();
